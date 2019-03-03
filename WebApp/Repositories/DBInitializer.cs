@@ -16,12 +16,12 @@ namespace Repositories
             {
                 RoleId = Guid.NewGuid().ToString(),
                 RoleName = "Admin",
-                Status = true
+                Status = true,
+                IsSysAdmin = true
             };
             context.Roles.Add(role);
             User user = new User()
             {
-                RoleId = role.RoleId,
                 Status = true,
                 UserId = Guid.NewGuid().ToString(),
                 UserName = "admin"
@@ -31,9 +31,17 @@ namespace Repositories
             {
                 UserId = user.UserId,
                 PasswordId = Guid.NewGuid().ToString(),
-                Password = "admin"
+                Password = "F3O1mKoocVu7y4NExBmKqA=="
             };
+           
             context.UserPasswords.Add(password);
+            UserRole userRole = new UserRole()
+            {
+                UserRoleId = Guid.NewGuid().ToString(),
+                UserId = user.UserId,
+                RoleId = role.RoleId
+            };
+            context.UserRoles.Add(userRole);
             base.Seed(context);
         }
     }

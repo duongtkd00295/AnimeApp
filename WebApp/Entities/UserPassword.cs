@@ -14,6 +14,7 @@ namespace Entities
         public string Password { get; set; }  
         public DateTime? CreateDate { get; set; }
         public DateTime? PasswordChangedDate { get; set; }
+        public bool IsForgotPassword { get; set; }
         public string UserId { get; set; }
         public virtual User User { get; set; }
     }

@@ -9,6 +9,10 @@ namespace Entities
 {
     public class User
     {
+        public User()
+        {
+            UserRoles = new HashSet<UserRole>();
+        }
         [Key]
         public string UserId { get; set; }
         public string UserName { get; set; }
@@ -19,7 +23,6 @@ namespace Entities
         public DateTime? CreateDate { get; set; } = DateTime.Now;
         public DateTime ? ModifiedDate { get; set; }
         public string CreateBy { get; set; }
-        public string RoleId { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

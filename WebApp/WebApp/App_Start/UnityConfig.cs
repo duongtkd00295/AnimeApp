@@ -1,5 +1,7 @@
 using System;
-
+using Repositories;
+using Services;
+using Services.Interfaces;
 using Unity;
 
 namespace WebApp
@@ -36,6 +38,8 @@ namespace WebApp
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
+            container.RegisterType(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+            container.RegisterType(typeof(IUserService), typeof(UserService));
             // NOTE: To load from web.config uncomment the line below.
             // Make sure to add a Unity.Configuration to the using statements.
             // container.LoadConfiguration();

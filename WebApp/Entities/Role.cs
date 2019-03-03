@@ -10,12 +10,18 @@ namespace Entities
 {
     public class Role
     {
+        public Role()
+        {
+            UserRoles = new HashSet<UserRole>();
+        }
         [Key]
         public string RoleId { get; set; }
         public string RoleName { get; set; }
         public bool Status { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public bool IsSysAdmin { get; set; }
+        public virtual ICollection<RolePermission> AssignedRoles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }
